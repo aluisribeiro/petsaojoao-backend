@@ -21,7 +21,7 @@ module.exports = {
         unique: true,
       },
       cpf: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(11),
         allowNull: false,
         unique: true,
       },
