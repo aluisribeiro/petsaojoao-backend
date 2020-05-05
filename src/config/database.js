@@ -5,6 +5,10 @@ module.exports = {
     database: "petsaojoao_dev",
     host: "localhost",
     dialect: "postgres",
+    define: {
+      underscored: true,
+      freezeTableName: true,
+    },
   },
   test: {
     username: "postgres",
@@ -12,6 +16,10 @@ module.exports = {
     database: "petsaojoao_test",
     host: "localhost",
     dialect: "postgres",
+    define: {
+      underscored: true,
+      freezeTableName: true,
+    },
   },
   production: {
     username: "postgres",
@@ -19,5 +27,9 @@ module.exports = {
     database: "petsaojoao",
     host: "localhost",
     dialect: "postgres",
+    define: {
+      underscored: true,
+      freezeTableName: true,
+    },
   },
 };

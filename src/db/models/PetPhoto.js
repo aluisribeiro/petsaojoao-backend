@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     },
-    {}
+    { tableName: "pets_photos" }
   );
   PetPhoto.associate = function (models) {
     // associations can be defined here

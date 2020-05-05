@@ -4,16 +4,16 @@ module.exports = (sequelize, DataTypes) => {
     "Tutor",
     {
       email: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(80),
         allowNull: false,
         unique: true,
       },
       name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false,
       },
       rg: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(15),
         allowNull: false,
         unique: true,
       },
@@ -22,32 +22,23 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: true,
       },
-      phone: {
-        type: DataTypes.INTEGER(10),
-        allowNull: false,
-      },
-      whatsapp: {
-        type: DataTypes.INTEGER(11),
-        allowNull: false,
-      },
+      phone: DataTypes.STRING(10),
+      whatsapp: DataTypes.STRING(11),
       cep: {
         type: DataTypes.STRING(8),
         allowNull: false,
       },
       street: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false,
       },
-      number: DataTypes.STRING,
-      area: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+      number: DataTypes.INTEGER,
+      area: DataTypes.STRING(100),
     },
-    {}
+    { tableName: "tutors" }
   );
   Tutor.associate = function (models) {
-    // associations can be defined here
+    Tutor.hasMany(models.Pet);
   };
   return Tutor;
 };

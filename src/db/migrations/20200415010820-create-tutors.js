@@ -1,7 +1,7 @@
 "use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("Tutors", {
+    return queryInterface.createTable("tutors", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -9,14 +9,14 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       email: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(80),
       },
       name: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(100),
         allowNull: false,
       },
       rg: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(15),
         allowNull: false,
         unique: true,
       },
@@ -25,38 +25,29 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
-      phone: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      whatsapp: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
+      phone: Sequelize.STRING(10),
+      whatsapp: Sequelize.STRING(11),
       cep: {
         type: Sequelize.STRING(8),
         allowNull: false,
       },
       street: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(100),
         allowNull: false,
       },
-      number: Sequelize.STRING,
-      area: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      createdAt: {
+      number: Sequelize.INTEGER,
+      area: Sequelize.STRING(100),
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE,
       },
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("Tutors");
+    return queryInterface.dropTable("tutors");
   },
 };

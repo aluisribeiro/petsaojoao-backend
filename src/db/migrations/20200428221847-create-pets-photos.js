@@ -1,47 +1,37 @@
 "use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("PetLosts", {
+    return queryInterface.createTable("pets_photos", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      petId: {
+      pet_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: "Pets",
+          model: "pets",
           key: "id",
         },
         onUpdate: "cascade",
         onDelete: "cascade",
       },
-      contact: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: false,
-      },
-      street: {
+      url: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      number: Sequelize.STRING,
-      area: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE,
       },
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("PetLosts");
+    return queryInterface.dropTable("pets_photos");
   },
 };
