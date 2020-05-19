@@ -1,9 +1,12 @@
-import express from "express";
+const { Router } = require('express');
+const router = Router();
 
-const routes = express.Router();
+const { getUsers, getUserById, createUser, updateUser, deleteUser } = require('../controllers/index.controller');
 
-routes.get("/", (req, res) => {
-  res.json({ message: "API Route" });
-});
+router.get('/registro', getUsers);
+router.get('/registro/:id', getUserById);
+router.post('/registro', createUser);
+router.put('/registro/:id', updateUser)
+router.delete('/registro/:id', deleteUser);
 
-export default routes;
+module.exports = router;
