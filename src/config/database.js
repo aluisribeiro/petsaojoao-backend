@@ -1,9 +1,11 @@
+require("dotenv/config");
+
 module.exports = {
   development: {
-    username: "postgres",
-    password: "example",
-    database: "petsaojoao_dev",
-    host: "localhost",
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
     dialect: "postgres",
     define: {
       underscored: true,
@@ -11,10 +13,10 @@ module.exports = {
     },
   },
   test: {
-    username: "postgres",
-    password: "example",
-    database: "petsaojoao_test",
-    host: "localhost",
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
     dialect: "postgres",
     define: {
       underscored: true,
@@ -22,14 +24,15 @@ module.exports = {
     },
   },
   production: {
-    username: "postgres",
-    password: "example",
-    database: "petsaojoao",
-    host: "localhost",
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
     dialect: "postgres",
     define: {
       underscored: true,
       freezeTableName: true,
     },
+    logging: false,
   },
 };

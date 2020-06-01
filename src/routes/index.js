@@ -1,12 +1,26 @@
-const { Router } = require('express');
-const router = Router();
+import express from "express";
+import TutorController from "../controllers/TutorController";
+import SpecieController from "../controllers/SpecieController";
+import BreedController from "../controllers/BreedController";
+import PetController from "../controllers/PetController";
+import PetPhotoController from "../controllers/PetPhotoController";
+import RegisterController from "../controllers/RegisterController";
 
-const { getUsers, getUserById, createUser, updateUser, deleteUser } = require('../controllers/index.controller');
+const routes = express.Router();
 
-router.get('/registro', getUsers);
-router.get('/registro/:id', getUserById);
-router.post('/registro', createUser);
-router.put('/registro/:id', updateUser)
-router.delete('/registro/:id', deleteUser);
+routes.post("/tutors", TutorController.store);
+routes.get("/tutors/:tutorId", TutorController.show);
+routes.get("/species", SpecieController.index);
+routes.get("/species/:specidId/breeds", BreedController.index);
+routes.post("/tutors/:tutorId/pets", PetController.store);
+routes.get("/tutors/:tutorId/pets", PetController.index);
+routes.post("/pets/:petId/photos", PetPhotoController.store);
+routes.get("/pets/:petId/photos", PetPhotoController.index);
+routes.post("/register", RegisterController.store);
+routes.get("/register/:registerId", RegisterController.show);
 
-module.exports = router;
+routes.get("/", (req, res) => {
+  res.json({ message: "API Route" });
+});
+
+export default routes;
