@@ -6,6 +6,7 @@ import PetController from "../controllers/PetController";
 import PetPhotoController from "../controllers/PetPhotoController";
 import AnalyticsController from "../controllers/AnalyticsController";
 import FoundPetController from "../controllers/FoundPetController";
+import RegisterContactController from "../controllers/RegisterContactController";
 
 const routes = express.Router();
 
@@ -20,6 +21,8 @@ routes.get("/pets/:petId/photos", PetPhotoController.index);
 routes.get("/analytics", AnalyticsController.index);
 routes.post("/found", FoundPetController.store);
 routes.get("/found/:id", FoundPetController.show);
+routes.post("/register", RegisterContactController.store);
+routes.get("/register/:registerContactId", RegisterContactController.show);
 
 routes.get("/", (req, res) => {
   res.json({ message: "API Route" });
