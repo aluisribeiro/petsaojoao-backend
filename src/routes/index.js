@@ -6,6 +6,7 @@ import PetController from "../controllers/PetController";
 import PetPhotoController from "../controllers/PetPhotoController";
 import AnalyticsController from "../controllers/AnalyticsController";
 import FoundPetController from "../controllers/FoundPetController";
+import FoundPetPhotoController from "../controllers/FoundPetPhotoController";
 import TopicController from "../controllers/TopicController";
 
 const routes = express.Router();
@@ -21,8 +22,8 @@ routes.get("/pets/:petId/photos", PetPhotoController.index);
 routes.get("/analytics", AnalyticsController.index);
 routes.post("/found", FoundPetController.store);
 routes.get("/found/:id", FoundPetController.show);
-routes.post("/pets/:id/photos", PetPhotoController.store);
-routes.get("/pets/:id/photos", PetPhotoController.index);
+routes.post("/found/:id/photos", FoundPetPhotoController.store);
+routes.get("/found/:id/photos", FoundPetPhotoController.index);
 routes.post("/topic/register", TopicController.register);
 routes.post("/topic/unregister", TopicController.unregister);
 
