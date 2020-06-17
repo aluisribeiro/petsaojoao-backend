@@ -23,8 +23,8 @@ routes.post("/found", FoundPetController.store);
 routes.get("/found/:id", FoundPetController.show);
 routes.post("/pets/:id/photos", PetPhotoController.store);
 routes.get("/pets/:id/photos", PetPhotoController.index);
-routes.post("/topic", TopicController.register);
-routes.post("/topic", TopicController.unregister);
+routes.post("/topic/register", TopicController.register);
+routes.post("/topic/unregister", TopicController.unregister);
 
 routes.get("/", (req, res) => {
   res.json({ message: "API Route" });
