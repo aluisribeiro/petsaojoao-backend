@@ -1,14 +1,16 @@
 import models from "../db/models";
+import FirebaseCloudMessaging from "../services/FirebaseCloudMessaging";
 
 class FoundPetController {
   async store(req, res) {
     try {
       const found = await models.FoundPet.create(req.body);
-      //call notification service here
+      const sendMessage = await FirebaseCloudMessaging.sendMessage(found.id);
 
-      return res.status(201).json({ found });
+      return res.status(201).json(found);
     } catch (error) {
-      return res.json({ error });
+      console.log(error);
+      return res.json(error);
     }
   }
   async show(req, res) {
@@ -23,7 +25,7 @@ class FoundPetController {
 
       return res.json(fPet);
     } catch (error) {
-      return res.json({ error });
+      return res.json(error);
     }
   }
 }
