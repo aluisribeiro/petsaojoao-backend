@@ -1,0 +1,378 @@
+{
+    "openapi": "3.0.5",
+    "info": {
+        "version": "1.0.0",
+        "title": "API Doc- Pet São João",
+        "description": "Welcome! In this page, you will find the documentation of our project´s API´s.",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "basePath": "/",
+    "host": "localhost:2000",
+    "tags": [
+        {
+            "name": "PetSJ",
+            "description": "Ache seu pet"
+        }
+    ],
+    "paths": {
+        "/tutors/tutorId": {
+            "get": {
+                "tags": [
+                    "TutorId"
+                ],
+                "summary": "Get tutor info by id",
+                "operationId": "getTutors",
+                "parameters": [
+                    {
+                        "name": "tutorId",
+                        "in": "path",
+                        "description": "id of your tutor",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Tutor does not exists"
+                    }
+                }
+            }
+        },
+        "/tutors/tutorId/pets": {
+            "post": {
+                "tags": [
+                    "TutorIdPets"
+                ],
+                "summary": "Create a new pet for a specific tutor",
+                "requestBody":{
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/definitions/TutorsPet"
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Tutor does not exists"
+                    }
+                }
+            }
+        },
+        "get":{
+            "tags":[
+                "tutorIdPets"
+            ],
+            "summary": "Get the pets of a specific tutor",
+            "operationId": "getTutors",
+            "parameters": [
+                {
+                    "name": "tutorId",
+                    "in": "path",
+                    "description": "id of your tutor",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK"
+                },
+                "400": {
+                    "description": "Tutor has no pets"
+                }
+            }
+        }
+        }
+        ,
+        "/tutors": {
+            "post": {
+                "tags": [
+                    "Tutors"
+                ],
+                "summary": "Create a new tutor in system",
+                "requestBody": {
+                    "description": "Tutor object",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/Tutor"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Tutor does not exists"
+                    }
+                }
+            }
+        },
+        "/species": {
+            "get": {
+                "tags": [
+                    "Species"
+                ],
+                "summary": "Get all species in the system",
+                "operationId": "getSpecies",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Tutor does not exists"
+                    }
+                }
+            }
+        },
+        "/species/specieId/breeds": {
+            "get": {
+                "tags": [
+                    "Species Breeds"
+                ],
+                "summary": "Get all species breeds in the system",
+                "operationId": "getSpeciesBreeds",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Specie does not exists"
+                    }
+                }
+            }
+        },
+
+
+    "/pets/:petId/photos": { 
+            "get": {
+                "tags": [
+                    "Pet Photos"
+                ],
+                "summary": "Get photos of pets within the system",
+                "operationId": "getPetPhotos",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Pet has no photos"
+                    }
+                }
+            }
+        },
+    
+    "/pets/petId/photos": {
+        "post": {
+            "tags": [
+                "Pet_Photos"
+            ],
+            "summary": "Get photos of pets within the system",
+            "requestBody": {
+                "description": "Pet_Photos",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/definitions/petPhotos"
+                        }
+                    }
+                }
+            },
+            "responses": {
+                "200": {
+                    "description": "OK"
+                },
+                "400": {
+                    "description": "Pet does not exists"
+                    }
+                }
+            }
+        },
+        "/analytics": { 
+            "get": {
+                "tags": [
+                    "Analytics Controller"
+                ],
+                "summary": "Get the system analytics",
+                "operationId": "getAnalytics",
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "400": {
+                        "description": "Error"
+                    }
+                }
+            }
+        },
+        "/found": {
+            "post": {
+                "tags": [
+                    "Pet Found"
+                ],
+                "summary": "Create a new found pet",
+                "requestBody": {
+                    "description": "Pet Found",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/Found"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Pet was found!"
+                    },
+                    "400": {
+                        "description": "Pet not found!"
+                        }
+                    }
+                }
+            },
+            "/found/id": {
+                "get": {
+                    "tags": [
+                        "Pet_Found"
+                    ],
+                    "summary": "Gets a found pet by id",
+                    "parameters": [
+                        {
+                            "name": "petId",
+                            "in": "path",
+                            "description": "id of your pet",
+                            "required": true,
+                            "type": "integer"
+                        }
+                    ],
+                    "operationId": "getFoundPetId",
+                    "responses": {
+                        "201": {
+                            "description": "found"
+                        },
+                        "400": {
+                            "description": "Pet not found"
+                        }
+                    }
+                }
+            },
+            "/coats/colors": {
+                "get": {
+                    "tags": [
+                        "Colors"
+                    ],
+                    "summary": "Get all Coat Colors in the system",
+                    "operationId": "Colors",
+                    "responses": {
+                        "200": {
+                            "description": "OK"
+                        },
+                        "400": {
+                            "description": "Coat Colors does not exists"
+                        }
+                    }
+                }
+            }
+        },
+    "definitions": {
+        "Tutor": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "rg": {
+                    "type": "string"
+                },
+                "cpf": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "whatsapp": {
+                    "type": "string"
+                },
+                "cep": {
+                    "type": "string"
+                },
+                "street": {
+                    "type": "string"
+                },
+                "number": {
+                    "type": "string"
+                },
+                "area": {
+                    "type": "string"
+                },
+                "complement": {
+                    "type": "string"
+                }
+            }
+        },
+        "TutorsPet":{
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "breed_id": {
+                    "type": "integer"
+                },
+                "genre": {
+                    "type": "string"
+                },
+                "date_birth": {
+                    "type": "DATE"
+                },
+                "coat_color_id": {
+                    "type": "integer"
+                },
+                "size": {
+                    "type": "string"
+                },
+                "castrated": {
+                    "type": "string"
+                },
+                "microship_serial": {
+                    "type": "string"
+                },
+                "tutor_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "Found":{
+            "properties":{
+                "annonymous":{
+                    "type": "boolean"
+                },
+                "lat":{ 
+                    "type":"double"
+            },
+                "lng":{
+                    "type": "double"
+                },
+                "note":{
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
