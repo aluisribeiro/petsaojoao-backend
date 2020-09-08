@@ -46,25 +46,42 @@ describe('create tutor', () => {
 
     describe('execute', () => {
 
-        it('should validate ', async () => {
+        it('should works ', async () => {
 
           const result = await interactor.execute({
             name: 'Anderson',
-            email: 'xxx',
-            rg: '',
-            cpf: '',
-            phone: '',
-            cep: '',
-            whatsapp: '',
-            street: '',
-            number: '',
-            area: '',
-            complement: '',
+            email: 'anderson_lr@hotmail.com',
+            rg: '11.333.333-3',
+            cpf: '444.444.444-23',
+            phone: '19996578890',
+            cep: '13880000',
+            whatsapp: '19998764351',
+            street: 'Rua Zonta',
+            number: '12',
+            area: 'Centro',
+            complement: ''
           });
 
+          const expected = {
+            id: 1,
+            name: 'Anderson',
+            email: 'anderson_lr@hotmail.com',
+            rg: '11.333.333-3',
+            cpf: '444.444.444-23',
+            phone: '19996578890',
+            cep: '13880000',
+            whatsapp: '19998764351',
+            street: 'Rua Zonta',
+            number: '12',
+            area: 'Centro',
+            complement: ''
+            
+         } as CreateTutorOutput;
+
           expect(validator.validate).toHaveBeenCalled();
+          expect(expected).toEqual(result);
 
         });
 
-      });
+    });
 });

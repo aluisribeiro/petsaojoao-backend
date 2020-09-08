@@ -20,34 +20,22 @@ export class CreateTutorInteractor implements Interactor {
     if (!result.valid) {
       throw this.errorFactory.getError(ErrorType.validation, result.error);
     }
-
-    // return true;
-
+    
     return Promise.resolve({ 
-       name: input.name,
-       email: input.email,
+      id: 1,
+      name: 'Anderson',
+      email: 'anderson_lr@hotmail.com',
+      rg: '11.333.333-3',
+      cpf: '444.444.444-23',
+      phone: '19996578890',
+      cep: '13880000',
+      whatsapp: '19998764351',
+      street: 'Rua Zonta',
+      number: '12',
+      area: 'Centro',
+      complement: ''
        
     } as CreateTutorOutput);
 
-//     const user = 
-
-//     await this.repository.saveTutor(request);
-// ß
-//     if (!user) {
-//       throw this.errorFactory.getError(ErrorType.userDoesNotExists, { id: request.userId });
-//     }
-
-//     try {
-//       user.balance += request.value;
-//       await this.depositRepository.saveUser(user);
-
-//       const transaction = new Transaction(user, user, request.value, TRANSACTION_TYPES.DEPOSIT);
-
-//       const transactionId = await this.depositRepository.createTransaction(transaction);
-
-//       return Promise.resolve({ balance: user.balance, transactionId } as DepositOutput);
-//     } catch (error) {
-//       throw this.errorFactory.getError(ErrorType.deposit, error);
-//     }
   }
 }

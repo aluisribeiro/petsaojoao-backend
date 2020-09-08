@@ -6,6 +6,6 @@ export class CreateTutorValidatorImpl implements CreateTutorValidator{
 
   validate(request: CreateTutorInput): ValidatorResult{
 
-    // return { valid: joiResult.error === null, error: joiResult.error };
+    return { valid: true, error: {} };
   }
 }
