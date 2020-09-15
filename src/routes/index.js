@@ -16,12 +16,10 @@ routes.get("/species", SpecieController.index);
 routes.get("/species/:specieId/breeds", BreedController.index);
 routes.post("/tutors/:tutorId/pets", PetController.store);
 routes.get("/tutors/:tutorId/pets", PetController.index);
-
-routes.post("/pets/:petId/photos", PetPhotoController.store); /////////
-routes.get("/pets/:petId/photos", PetPhotoController.index); ////////
-
-routes.get("/analytics", AnalyticsController.index); /////////
-routes.post("/found", FoundPetController.store); /////////
+routes.post("/pets/:petId/photos", PetPhotoController.store); 
+routes.get("/pets/:petId/photos", PetPhotoController.index);
+routes.get("/analytics", AnalyticsController.index);
+routes.post("/found", FoundPetController.store); 
 
 routes.get("/found/:id", FoundPetController.show);
 routes.get("/coats/colors", CoatColorController.index);
