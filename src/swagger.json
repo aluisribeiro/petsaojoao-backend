@@ -143,6 +143,15 @@
                     "Species Breeds"
                 ],
                 "summary": "Get all species breeds in the system",
+                "parameters":[
+                  {
+                    "name":"specieId",
+                    "description":"Get all the breeds from a specific specie",
+                    "required": true,
+                    "type": "integer"
+                    
+                  }
+                  ],
                 "operationId": "getSpeciesBreeds",
                 "responses": {
                     "200": {
@@ -163,6 +172,15 @@
                 ],
                 "summary": "Get photos of pets within the system",
                 "operationId": "getPetPhotos",
+                "parameters":[
+                  {
+                    "name": "petId",
+                    "description": "get all the photos of a given pet id" ,
+                    "type": "interger",
+                    "required": true
+                  }
+                  ],
+                
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -179,7 +197,20 @@
             "tags": [
                 "Pet_Photos"
             ],
-            "summary": "Get photos of pets within the system",
+            "summary": "Post a new photo of a pet",
+            "parameters": [
+                    {
+                        "name": "tutorId",
+                        "description": "id of the pet tutor",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "image",
+                        "description": "upload the photo document",
+                        "required": true
+                    }
+                ],
             "requestBody": {
                 "description": "Pet_Photos",
                 "content": {
@@ -223,6 +254,24 @@
                     "Pet Found"
                 ],
                 "summary": "Create a new found pet",
+                 "parameters": [
+                    {
+                        "name": "description",
+                        "description": "Description of the found pet",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "adress",
+                        "description":"adress where the pet has been found",
+                        "required": true
+                    },
+                    {
+                        "name": "image",
+                        "description": "Upload a photo of the found pet",
+                        "required": false
+                    }
+                ],
                 "requestBody": {
                     "description": "Pet Found",
                     "content": {
