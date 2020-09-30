@@ -13,15 +13,23 @@
     "host": "localhost:2000",
     "tags": [
         {
-            "name": "PetSJ",
-            "description": "Ache seu pet"
+            "name": "pet",
+            "description": "Everything about pets"
+        },
+        {
+            "name": "tutor",
+            "description": "Everything about tutors"
+        },
+        {
+            "name": "species",
+            "description": "info about species"
         }
     ],
     "paths": {
         "/tutors/tutorId": {
             "get": {
                 "tags": [
-                    "TutorId"
+                    "tutor"
                 ],
                 "summary": "Get tutor info by id",
                 "operationId": "getTutors",
@@ -47,57 +55,38 @@
         "/tutors/tutorId/pets": {
             "post": {
                 "tags": [
-                    "TutorIdPets"
+                    "pet"
                 ],
                 "summary": "Create a new pet for a specific tutor",
-                "requestBody":{
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/definitions/TutorsPet"
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/TutorsPet"
+                            }
+                        }
+                    
+                  
+                      }
+                    }
+                    
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "OK"
+                        },
+                        "400": {
+                            "description": "Tutor does not exists"
                         }
                     }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "400": {
-                        "description": "Tutor does not exists"
-                    }
                 }
-            }
-        },
-        "get":{
-            "tags":[
-                "tutorIdPets"
-            ],
-            "summary": "Get the pets of a specific tutor",
-            "operationId": "getTutors",
-            "parameters": [
-                {
-                    "name": "tutorId",
-                    "in": "path",
-                    "description": "id of your tutor",
-                    "required": true,
-                    "type": "integer"
-                }
-            ],
-            "responses": {
-                "200": {
-                    "description": "OK"
-                },
-                "400": {
-                    "description": "Tutor has no pets"
-                }
-            }
-        }
-        }
-        ,
+            },
+        
+    
         "/tutors": {
             "post": {
                 "tags": [
-                    "Tutors"
+                    "tutor"
                 ],
                 "summary": "Create a new tutor in system",
                 "requestBody": {
@@ -123,7 +112,7 @@
         "/species": {
             "get": {
                 "tags": [
-                    "Species"
+                    "species"
                 ],
                 "summary": "Get all species in the system",
                 "operationId": "getSpecies",
@@ -132,7 +121,7 @@
                         "description": "OK"
                     },
                     "400": {
-                        "description": "Tutor does not exists"
+                        "description": "Specie does not exists"
                     }
                 }
             }
@@ -140,18 +129,9 @@
         "/species/specieId/breeds": {
             "get": {
                 "tags": [
-                    "Species Breeds"
+                    "species"
                 ],
                 "summary": "Get all species breeds in the system",
-                "parameters":[
-                  {
-                    "name":"specieId",
-                    "description":"Get all the breeds from a specific specie",
-                    "required": true,
-                    "type": "integer"
-                    
-                  }
-                  ],
                 "operationId": "getSpeciesBreeds",
                 "responses": {
                     "200": {
@@ -163,24 +143,13 @@
                 }
             }
         },
-
-
-    "/pets/:petId/photos": { 
+        "/pets/:petId/photos": {
             "get": {
                 "tags": [
-                    "Pet Photos"
+                    "pet"
                 ],
                 "summary": "Get photos of pets within the system",
                 "operationId": "getPetPhotos",
-                "parameters":[
-                  {
-                    "name": "petId",
-                    "description": "get all the photos of a given pet id" ,
-                    "type": "interger",
-                    "required": true
-                  }
-                  ],
-                
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -191,47 +160,33 @@
                 }
             }
         },
-    
-    "/pets/petId/photos": {
-        "post": {
-            "tags": [
-                "Pet_Photos"
-            ],
-            "summary": "Post a new photo of a pet",
-            "parameters": [
-                    {
-                        "name": "tutorId",
-                        "description": "id of the pet tutor",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "image",
-                        "description": "upload the photo document",
-                        "required": true
-                    }
+        "/pets/petId/photos": {
+            "post": {
+                "tags": [
+                    "pet"
                 ],
-            "requestBody": {
-                "description": "Pet_Photos",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/definitions/petPhotos"
+                "summary": "Post a new photo of a pet",
+                "requestBody": {
+                    "description": "Pet_Photos",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/petPhotos"
+                            }
                         }
                     }
-                }
-            },
-            "responses": {
-                "200": {
-                    "description": "OK"
                 },
-                "400": {
-                    "description": "Pet does not exists"
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Pet does not exists"
                     }
                 }
             }
         },
-        "/analytics": { 
+        "/analytics": {
             "get": {
                 "tags": [
                     "Analytics Controller"
@@ -251,27 +206,9 @@
         "/found": {
             "post": {
                 "tags": [
-                    "Pet Found"
+                    "pet"
                 ],
                 "summary": "Create a new found pet",
-                 "parameters": [
-                    {
-                        "name": "description",
-                        "description": "Description of the found pet",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "adress",
-                        "description":"adress where the pet has been found",
-                        "required": true
-                    },
-                    {
-                        "name": "image",
-                        "description": "Upload a photo of the found pet",
-                        "required": false
-                    }
-                ],
                 "requestBody": {
                     "description": "Pet Found",
                     "content": {
@@ -288,54 +225,56 @@
                     },
                     "400": {
                         "description": "Pet not found!"
-                        }
-                    }
-                }
-            },
-            "/found/id": {
-                "get": {
-                    "tags": [
-                        "Pet_Found"
-                    ],
-                    "summary": "Gets a found pet by id",
-                    "parameters": [
-                        {
-                            "name": "petId",
-                            "in": "path",
-                            "description": "id of your pet",
-                            "required": true,
-                            "type": "integer"
-                        }
-                    ],
-                    "operationId": "getFoundPetId",
-                    "responses": {
-                        "201": {
-                            "description": "found"
-                        },
-                        "400": {
-                            "description": "Pet not found"
-                        }
-                    }
-                }
-            },
-            "/coats/colors": {
-                "get": {
-                    "tags": [
-                        "Colors"
-                    ],
-                    "summary": "Get all Coat Colors in the system",
-                    "operationId": "Colors",
-                    "responses": {
-                        "200": {
-                            "description": "OK"
-                        },
-                        "400": {
-                            "description": "Coat Colors does not exists"
-                        }
                     }
                 }
             }
         },
+        "/found/id": {
+            "get": {
+                "tags": [
+                    "pet"
+                ],
+                "summary": "Gets a found pet by id",
+                "parameters": [
+                    {
+                        "name": "petId",
+                        "in": "path",
+                        "description": "id of your pet",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "operationId": "getFoundPetId",
+                "responses": {
+                    "201": {
+                        "description": "found"
+                    },
+                    "400": {
+                        "description": "Pet not found"
+                    }
+                }
+            }
+        },
+        "/coats/colors": {
+            "get": {
+                "tags": [
+                    "species"
+                ],
+                "summary": "Get all Coat Colors in the system",
+                "operationId": "Colors",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Coat Colors does not exists"
+                    }
+                }
+            }
+        },
+    
+
+
     "definitions": {
         "Tutor": {
             "type": "object",
@@ -375,7 +314,7 @@
                 }
             }
         },
-        "TutorsPet":{
+        "TutorsPet": {
             "type": "object",
             "properties": {
                 "name": {
@@ -407,21 +346,28 @@
                 }
             }
         },
-        "Found":{
-            "properties":{
-                "annonymous":{
+        "Found": {
+            "properties": {
+                "annonymous": {
                     "type": "boolean"
                 },
-                "lat":{ 
-                    "type":"double"
-            },
-                "lng":{
+                "lat": {
                     "type": "double"
                 },
-                "note":{
+                "lng": {
+                    "type": "double"
+                },
+                "note": {
                     "type": "string"
                 }
             }
+        },
+        "petPhotos":{
+          "properties":{
+            "url": {
+              "type": "string"
+            }
+          }
         }
     }
 }
