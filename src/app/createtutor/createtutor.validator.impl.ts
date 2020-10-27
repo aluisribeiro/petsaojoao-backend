@@ -3,10 +3,12 @@ import { CreateTutorValidator } from "./createtutor.validator";
 import { CreateTutorInput } from "./createtutor.in";
 
 import Ajv from "ajv";
+import CPF from "cpf";
 const ajv = new Ajv();
 
 export class CreateTutorValidatorImpl implements CreateTutorValidator {
   validate(request: CreateTutorInput): ValidatorResult {
+    // Here we are define what is standards of attributes
     const schema = {
       properties: {
         name: {
@@ -22,6 +24,7 @@ export class CreateTutorValidatorImpl implements CreateTutorValidator {
         cpf: {
           type: "string",
           maxLength: 11,
+          minLength: 11,
           pattern: "[0-9]{11}",
           unique: true,
         },
@@ -46,7 +49,10 @@ export class CreateTutorValidatorImpl implements CreateTutorValidator {
 
     let validation = ajv.validate(schema, request);
 
-    if (!validation) return { valid: false, error: {} };
+    // If the validation find something different than standards or CPF is not valid
+    // it will return false
+    if (!validation || !CPF.isValid(request.cpf))
+      return { valid: false, error: {} };
 
     return { valid: true, error: {} };
   }
