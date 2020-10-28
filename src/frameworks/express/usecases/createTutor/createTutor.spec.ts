@@ -31,7 +31,4 @@ describe('CreateTutor', () => {
     // Nao sei como faz para seber se é um json, typeof talvez?
     expect(true).toEqual(true);
   })
-
-
-
 })
