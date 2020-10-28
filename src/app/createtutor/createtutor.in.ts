@@ -1,5 +1,6 @@
-import { ID } from '../core/definitions/id';
-import { Input } from '../core/definitions/input';
+import { ID } from '../../core/definitions/id';
+import { Input } from '../../core/definitions/input';
+import { Request, Response } from 'express';
 
 export interface CreateTutorInput extends Input {
   name: string,
@@ -14,3 +15,4 @@ export interface CreateTutorInput extends Input {
   area: string,
   complement: string,
 }
+
