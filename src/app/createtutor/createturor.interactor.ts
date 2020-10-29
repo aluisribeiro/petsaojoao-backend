@@ -1,18 +1,17 @@
-import { Interactor } from '../core/definitions/interactor';
-import { ApplicationErrorFactory } from '../core/definitions/application-error-factory';
-
+import { Interactor } from '../../core/definitions/interactor';
+import { ApplicationErrorFactory } from '../../core/definitions/application-error-factory';
 import { CreateTutorInput } from './createtutor.in';
 import { CreateTutorOutput } from './createtutor.out';
 import { CreateTutorRepository } from './createtutor.repository';
 import { CreateTutorValidator } from './createtutor.validator';
-import { ErrorType } from '../core/definitions/error-type';
+import { ErrorType } from '../../core/definitions/error-type';
 
 export class CreateTutorInteractor implements Interactor {
   constructor(
     private validator: CreateTutorValidator,
     private errorFactory: ApplicationErrorFactory,
     private repository: CreateTutorRepository,
-  ) {}
+  ) { }
 
   async execute(input: CreateTutorInput): Promise<CreateTutorInput> {
     const result = this.validator.validate(input);
@@ -20,10 +19,10 @@ export class CreateTutorInteractor implements Interactor {
     if (!result.valid) {
       throw this.errorFactory.getError(ErrorType.validation, result.error);
     }
-    
-    return Promise.resolve({ 
+
+    return Promise.resolve({
       id: 1,
-      name: 'Anderson',
+      name: 'Anderso2n',
       email: 'anderson_lr@hotmail.com',
       rg: '11.333.333-3',
       cpf: '444.444.444-23',
@@ -34,7 +33,7 @@ export class CreateTutorInteractor implements Interactor {
       number: '12',
       area: 'Centro',
       complement: ''
-       
+
     } as CreateTutorOutput);
 
   }
