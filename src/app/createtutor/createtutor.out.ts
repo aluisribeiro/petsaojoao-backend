@@ -1,5 +1,5 @@
-import { ID } from '../core/definitions/id';
-import { Output } from '../core/definitions/output';
+import { ID } from '../../core/definitions/id';
+import { Output } from '../../core/definitions/output';
 
 export interface CreateTutorOutput extends Output {
   id: number,
