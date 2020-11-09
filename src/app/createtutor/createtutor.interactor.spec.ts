@@ -3,12 +3,12 @@ import { CreateTutorInput } from './createtutor.in';
 import { CreateTutorOutput } from './createtutor.out';
 import { CreateTutorInteractor } from './createturor.interactor';
 import { CreateTutorValidator } from './createtutor.validator';
-import { ValidatorResult } from '../core/definitions/validator-result';
+import { ValidatorResult } from '../../core/definitions/validator-result';
 import { CreateTutorRepository } from './createtutor.repository';
-import { ApplicationErrorFactory } from '../core/definitions/application-error-factory';
-import { CustomError } from '../core/definitions/custom-error';
-import { Err } from '../core/definitions/err';
-import { Tutor } from '../core/entities/tutor';
+import { ApplicationErrorFactory } from '../../core/definitions/application-error-factory';
+import { CustomError } from '../../core/definitions/custom-error';
+import { Err } from '../../core/definitions/err';
+import { Tutor } from '../../infra/typeorm/entities/tutor';
 
 function isCreateTutorOutput(output: CreateTutorOutput): output is CreateTutorOutput {
   return (output as CreateTutorOutput) !== undefined;
@@ -16,72 +16,72 @@ function isCreateTutorOutput(output: CreateTutorOutput): output is CreateTutorOu
 
 describe('create tutor', () => {
 
-    let validator: CreateTutorValidator;
-    let errorFactory;
-    let repository;
-    let interactor: CreateTutorInteractor;
+  let validator: CreateTutorValidator;
+  let errorFactory;
+  let repository;
+  let interactor: CreateTutorInteractor;
 
-    beforeEach(() => {
-      validator = {
-        validate: jest.fn(() => {
-          return { valid: true, error: {} };
-        }),
-      };
+  beforeEach(() => {
+    validator = {
+      validate: jest.fn(() => {
+        return { valid: true, error: {} };
+      }),
+    };
 
-      errorFactory = {
-        getError: jest.fn(() => new Error('test')),
-      };
+    errorFactory = {
+      getError: jest.fn(() => new Error('test')),
+    };
 
-      repository = {
-        saveTutor: jest.fn(async () => Promise.resolve(true)),
-      };
+    repository = {
+      saveTutor: jest.fn(async () => Promise.resolve(true)),
+    };
 
-      interactor = new CreateTutorInteractor(
-        validator,
-        errorFactory,
-        repository
-      );
+    interactor = new CreateTutorInteractor(
+      validator,
+      errorFactory,
+      repository
+    );
 
-    });
+  });
 
-    describe('execute', () => {
+  describe('execute', () => {
 
-        it('should works ', async () => {
+    it('should works ', async () => {
 
-          const result = await interactor.execute({
-            name: 'Anderson',
-            email: 'anderson_lr@hotmail.com',
-            rg: '11.333.333-3',
-            cpf: '444.444.444-23',
-            phone: '19996578890',
-            cep: '13880000',
-            whatsapp: '19998764351',
-            street: 'Rua Zonta',
-            number: '12',
-            area: 'Centro',
-            complement: ''
-          });
+      const result = await interactor.execute({
+        name: 'Anderson',
+        email: 'anderson_lr@hotmail.com',
+        rg: '11.333.333-3',
+        cpf: '444.444.444-23',
+        phone: '19996578890',
+        cep: '13880000',
+        whatsapp: '19998764351',
+        street: 'Rua Zonta',
+        number: '12',
+        area: 'Centro',
+        complement: ''
+      });
 
-          const expected = {
-            id: 1,
-            name: 'Anderson',
-            email: 'anderson_lr@hotmail.com',
-            rg: '11.333.333-3',
-            cpf: '444.444.444-23',
-            phone: '19996578890',
-            cep: '13880000',
-            whatsapp: '19998764351',
-            street: 'Rua Zonta',
-            number: '12',
-            area: 'Centro',
-            complement: ''
-            
-         } as CreateTutorOutput;
+      const expected = {
+        id: 1,
+        name: 'Anderson',
+        email: 'anderson_lr@hotmail.com',
+        rg: '11.333.333-3',
+        cpf: '444.444.444-23',
+        phone: '19996578890',
+        cep: '13880000',
+        whatsapp: '19998764351',
+        street: 'Rua Zonta',
+        number: '12',
+        area: 'Centro',
+        complement: ''
 
-          expect(validator.validate).toHaveBeenCalled();
-          expect(expected).toEqual(result);
+      } as CreateTutorOutput;
 
-        });
+      expect(validator.validate).toHaveBeenCalled();
+      expect(expected).toEqual(result);
 
     });
+
+  });
 });
