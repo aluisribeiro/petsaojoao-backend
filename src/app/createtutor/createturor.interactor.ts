@@ -22,7 +22,7 @@ export class CreateTutorInteractor implements Interactor {
 
     return Promise.resolve({
       id: 1,
-      name: 'Anderso2n',
+      name: 'Anderson',
       email: 'anderson_lr@hotmail.com',
       rg: '11.333.333-3',
       cpf: '444.444.444-23',
