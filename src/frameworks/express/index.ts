@@ -1,10 +1,13 @@
 import express from 'express';
-import { Tutor } from '../../app/core/entities/tutor';
+
+import routes from './routes'
 
 const app = express();
 
-app.get('/', (req, res) => {
-    return res.send(`Hi Anderson`);
-})
+app.use(express.json());
 
-app.listen(3333);
+app.use(routes);
+
+app.listen(process.env.PORT || 3333)
+
+export default app;
