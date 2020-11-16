@@ -8,7 +8,7 @@ describe('CreateTutor', () => {
       .post('/createTutor')
       .send("<?xml version='1.0'><filmes><filme id='1'><titulo>O XML veste prada</titulo><resumo>O filme mostra a elegância da XML na representação de dados estruturados e semi estruturados.</resumo><genero>Aventura</genero><genero>Documentário</genero><elenco><ator>Mark UPlanguage</ator><ator>Mary well-Formed</ator><ator>Sedna D. Atabase</ator></elenco></filme></filmes>")
       .expect(400)
-  }, 2000)
+  })
 
   test('should return error if any mandatory fields are not filled', async () => {
     await request(app)
@@ -27,7 +27,7 @@ describe('CreateTutor', () => {
         complement: ""
       })
       .expect(400)
-  }, 2000)
+  })
 
   test('should return success', async () => {
     await request(app)
@@ -46,6 +46,6 @@ describe('CreateTutor', () => {
         complement: ""
       })
       .expect(200)
-  }, 2000)
+  })
 
 })
