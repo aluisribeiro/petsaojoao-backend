@@ -7,7 +7,7 @@
     "start:dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules src/frameworks/express/index.ts",
     "start:prod": "node dist/server",
     "build": "babel src -s -D -d dist",
-    "test": "jest --detectOpenHandles src/"
+    "test": "jest src/"
   },
   "jest": {
     "transform": {

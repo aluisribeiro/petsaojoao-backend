@@ -2,7 +2,6 @@ import request from 'supertest'
 import app from "@/frameworks/express/index";
 
 describe('CreateTutor', () => {
-
   test('should return error if the data format is not json', async () => {
     await request(app)
       .post('/createTutor')
