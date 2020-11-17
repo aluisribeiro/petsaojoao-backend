@@ -1,4 +1,4 @@
-import { ID } from '../../../core/definitions/id';
+import { ID } from '../../../app/core/definitions/id';
 
 import { Entity } from './entity';
 
