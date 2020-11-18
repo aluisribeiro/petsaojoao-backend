@@ -6,16 +6,16 @@ export class Tutor implements Entity {
   id?: ID;
 
   constructor(
-    private name: string,
-    private email: string,
-    private rg: string,
-    private cpf: string,
-    private phone: string,
-    private cep: string,
-    private whatsapp?: string,
-    private street?: string,
-    private number?: string,
-    private area?: string,
-    private complement?: string,
-  ) {}
+    public name?: string,
+    public email?: string,
+    public rg?: number,
+    public cpf?: string,
+    public phone?: string,
+    public cep?: string,
+    public whatsapp?: string,
+    public street?: string,
+    public number?: string,
+    public area?: string,
+    public complement?: string,
+  ) { }
 }

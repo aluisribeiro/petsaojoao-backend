@@ -1,3 +1,3 @@
-import { Serializable } from '../../../core/definitions/serializable';
+import { Serializable } from "../../../app/core/definitions/serializable";
 
-export interface Entity extends Serializable {}
+export interface Entity extends Serializable { }
