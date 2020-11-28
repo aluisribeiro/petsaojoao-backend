@@ -9,6 +9,8 @@ import { ApplicationErrorFactory } from '../core/definitions/application-error-f
 import { CustomError } from '../core/definitions/custom-error';
 import { Err } from '../core/definitions/err';
 import { Tutor } from '../core/entities/tutor';
+import { ValidatorCPFImpl } from '../shared/create.tutor.cpf.impl';
+
 
 function isCreateTutorOutput(output: CreateTutorOutput): output is CreateTutorOutput {
   return (output as CreateTutorOutput) !== undefined;
@@ -84,4 +86,33 @@ describe('create tutor', () => {
         });
 
     });
+
+    describe("Validation received data", () => {
+        it("It should check if the received data of tutor is valid", () => {
+
+
+          let validator = new CreateTutorValidatorImpl
+
+          const received = validator.validate({
+            name: 'Fernando',
+            email: 'fernando@hotmail.com',
+            rg: '11.333.333-3',
+            cpf: '97434986050',
+            phone: '199998766666',
+            cep: '13870010',
+            whatsapp: '19998764351',
+            street: 'Rua Zonta',
+            number: '12',
+            area: 'Centro',
+            complement: ''
+          });
+
+          const expected = { valid: true, error: {} }
+
+          expect(received).toEqual(expected);
+
+        })
+
+
+    } )
 });
