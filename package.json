@@ -15,10 +15,12 @@
     }
   },
   "dependencies": {
+    "@types/multer": "^1.4.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "firebase-admin": "^8.12.1",
+    "firebase-admin": "^9.4.1",
     "moment": "^2.26.0",
+    "multer": "^1.4.2",
     "pg": "^7.18.2",
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.21.11"
