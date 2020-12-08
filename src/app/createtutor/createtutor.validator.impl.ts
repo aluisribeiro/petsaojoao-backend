@@ -2,7 +2,7 @@ import { ValidatorResult } from "@/app/core/definitions/validator-result";
 import { CreateTutorValidator } from "@/app/createtutor/createtutor.validator";
 import { CreateTutorInput } from "@/app/createtutor/createtutor.in";
 import { AjvCreateTutorValidator } from "@/frameworks/ajv/createtutor/createtutor.validator.ajv"
-import { ValidatorCPFImpl } from "@/app/shared/create.tutor.cpf.impl"
+import { ValidatorCPFImpl } from "@/app/shared/cpf.validator.Imp"
 
 export class CreateTutorValidatorImpl implements CreateTutorValidator {
   validate(request: CreateTutorInput): ValidatorResult {

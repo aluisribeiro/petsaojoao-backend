@@ -1,5 +1,5 @@
 import { ValidatorResult } from "../core/definitions/validator-result";
-import { ValidatorCPF } from "./create.tutor.validator.cpf"
+import { ValidatorCPF } from "./validator.cpf"
 import { CreateTutorInput } from "../createtutor/createtutor.in";
 
 

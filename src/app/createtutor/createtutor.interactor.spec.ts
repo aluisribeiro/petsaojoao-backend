@@ -9,7 +9,7 @@ import { ApplicationErrorFactory } from '../core/definitions/application-error-f
 import { CustomError } from '../core/definitions/custom-error';
 import { Err } from '../core/definitions/err';
 import { Tutor } from '../core/entities/tutor';
-import { ValidatorCPFImpl } from '../shared/create.tutor.cpf.impl';
+import { ValidatorCPFImpl } from '../shared/cpf.validator.Imp';
 
 
 function isCreateTutorOutput(output: CreateTutorOutput): output is CreateTutorOutput {
