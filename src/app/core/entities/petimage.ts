@@ -7,6 +7,10 @@ export class PetImage implements Entity {
 
     constructor (
         public petId: number,
-        public petImage: File
+        public petImage: {
+            filename: string,
+            path: string,
+            size: number
+        }
     ) {}
 }

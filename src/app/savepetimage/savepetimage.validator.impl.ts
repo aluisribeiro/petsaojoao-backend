@@ -7,7 +7,7 @@ export class SavePetImageValidatorImpl implements Validator<SavePetImageInput> {
   validate(request: SavePetImageInput): ValidatorResult{
 
     const { petId, petImage } = request
-    const limitSize: number = process.env.LIMIT_SIZE
+    const limitSize: number = Number(process.env.LIMIT_SIZE) || 500000
 
     if (!petId || !petImage) {
       return { valid: false, error: "mandatory fields not filled" }

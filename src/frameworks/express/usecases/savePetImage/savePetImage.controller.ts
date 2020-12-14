@@ -13,7 +13,11 @@ class SavePetImageController {
 
       const savePetImageIn: SavePetImageInput = {
         petId: request.body.petId,
-        petImage: request.file 
+        petImage: {
+          filename: request.file.filename,
+          path:     request.file.path,
+          size:     request.file.size
+        }
       }
 
       const validator = new SavePetImageValidatorImpl
