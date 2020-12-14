@@ -3,13 +3,11 @@ import express from 'express'
 import CreateTutorController from './usecases/createTutor/createTutor.controller';
 import SavePetImageController from './usecases/savePetImage/savePetImage.controller';
 
-import multer from 'multer';
-import multerConfig from '@/frameworks/multer/config.ts';
-
-const uploadMulter = multer(multerConfig);
-
+import Multer from '@/frameworks/multer/config.ts';
 
 const routes = express.Router()
+
+const multer = new Multer
 
 const createTutor = new CreateTutorController();
 const savePetImage = new SavePetImageController();
@@ -20,6 +18,6 @@ routes.get('/', (request, response) => {
 
 routes.post('/createTutor', createTutor.create);
 
-routes.post('/savepetimage', uploadMulter.single('petImage'), savePetImage.create);
+routes.post('/savepetimage', multer.configuration().single('petImage'), savePetImage.create);
 
 export default routes
