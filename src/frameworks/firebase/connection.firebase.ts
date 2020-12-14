@@ -1,16 +1,17 @@
 import admin from 'firebase-admin';
+import dotenv from "dotenv"
+dotenv.config()
 export class Firebase {
 
   createConnection() {
+
    return admin.initializeApp({
-      
-        credential: admin.credential.cert({
-            projectId: process.env.PROJECT_ID, 
-            clientEmail: process.env.CLIENT_EMAIL, 
-            privateKey: process.env.PRIVATE_KEY,
-          }),
-        storageBucket: 'petsaojoaobackend.appspot.com'
-      });
+      // To validate this credentials its necessary define a environment variable with name GOOGLE_APPLICATION_CREDENTIALS
+      // with the path to file json geted of firebase
+      credential: admin.credential.applicationDefault(),
+      databaseURL: process.env.DATABASE_URL,
+      storageBucket: process.env.BUCKET
+    })
   }
 
   connectToBucket(){
