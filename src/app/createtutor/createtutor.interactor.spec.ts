@@ -96,9 +96,9 @@ describe('create tutor', () => {
           const received = validator.validate({
             name: 'Fernando',
             email: 'fernando@hotmail.com',
-            rg: '11.333.333-3',
-            cpf: '97434986050',
-            phone: '199998766666',
+            rg: '113333333',
+            cpf: '70733843018',
+            phone: '19999999999',
             cep: '13870010',
             whatsapp: '19998764351',
             street: 'Rua Zonta',
